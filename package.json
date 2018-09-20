@@ -1,0 +1,28 @@
+{
+  "name": "@d-fischer/logger",
+  "version": "0.0.0",
+  "description": "A simple logger for Node and the browser.",
+  "main": "lib",
+  "types": "lib/index",
+  "repository": "github:d-fischer/logger",
+  "author": "Daniel Fischer <fischer.daniel94@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "detect-node": "^2.0.4",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.19",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "typescript": "^3.0.1"
+  },
+  "scripts": {
+    "lint": "tslint --project .",
+    "build": "tsc",
+    "rebuild": "rimraf lib && yarn run build",
+    "prepare": "yarn run lint && yarn run rebuild"
+  }
+}
