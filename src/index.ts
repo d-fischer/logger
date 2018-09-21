@@ -3,6 +3,7 @@ import { default as ILogger } from './Logger';
 import LoggerOptions from './LoggerOptions';
 
 const Logger: { new(options: LoggerOptions): ILogger } = isNode ? require('./NodeLogger').default : require('./BrowserLogger').default;
+type Logger = ILogger;
 
 export default Logger;
 
