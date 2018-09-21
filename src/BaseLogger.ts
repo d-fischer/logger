@@ -1,19 +1,22 @@
 import LoggerOptions from './LoggerOptions';
 import LogLevel from './LogLevel';
 import Logger from './Logger';
+import isNode = require('detect-node');
 
 export default abstract class BaseLogger implements Logger {
 	protected readonly _name: string;
 	protected readonly _minLevel: LogLevel;
 	protected readonly _emoji: boolean;
 	protected readonly _colors: boolean;
+	protected readonly _timestamps: boolean;
 
 	// noinspection TypeScriptAbstractClassConstructorCanBeMadeProtected NO IT CAN'T
-	constructor({ name, minLevel = LogLevel.WARNING, emoji = false, colors = true }: LoggerOptions) {
+	constructor({ name, minLevel = LogLevel.WARNING, emoji = false, colors = true, timestamps = isNode }: LoggerOptions) {
 		this._name = name;
 		this._minLevel = minLevel;
 		this._emoji = emoji;
 		this._colors = colors;
+		this._timestamps = timestamps;
 	}
 
 	abstract log(level: LogLevel, message: string): void;

@@ -5,4 +5,5 @@ export default interface LoggerOptions {
 	minLevel?: LogLevel;
 	colors?: boolean;
 	emoji?: boolean;
+	timestamps?: boolean;
 }

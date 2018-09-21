@@ -9,6 +9,12 @@ export default class BrowserLogger extends BaseLogger {
 
 		const logFn = LogLevelToConsoleFunction[level];
 
-		logFn(`[${this._name}] ${message}`);
+		let formattedMessage = `[${this._name}] ${message}`;
+
+		if (this._timestamps) {
+			formattedMessage = `[${new Date().toLocaleTimeString()}] ${message}`;
+		}
+
+		logFn(formattedMessage);
 	}
 }
