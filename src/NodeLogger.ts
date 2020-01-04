@@ -1,5 +1,5 @@
 import LogLevel, { LogLevelMap, LogLevelToConsoleFunction } from './LogLevel';
-import chalk, { Chalk } from 'chalk';
+import * as chalk from 'chalk';
 import BaseLogger from './BaseLogger';
 
 export const LogLevelToEmoji: LogLevelMap<string> = {
@@ -14,7 +14,7 @@ export const LogLevelToEmoji: LogLevelMap<string> = {
 	[LogLevel.TRACE]: '\u{1F43E}'
 };
 
-export const LogLevelToColor: LogLevelMap<Chalk> = {
+export const LogLevelToColor: LogLevelMap<chalk.Chalk> = {
 	[LogLevel.CRITICAL]: chalk.red,
 	[LogLevel.ERROR]: chalk.redBright,
 	[LogLevel.WARNING]: chalk.yellow,
@@ -25,7 +25,7 @@ export const LogLevelToColor: LogLevelMap<Chalk> = {
 	[LogLevel.TRACE]: chalk.reset
 };
 
-export const LogLevelToBackgroundColor: LogLevelMap<Chalk> = {
+export const LogLevelToBackgroundColor: LogLevelMap<chalk.Chalk> = {
 	[LogLevel.CRITICAL]: chalk.bgRed.white,
 	[LogLevel.ERROR]: chalk.bgRedBright.white,
 	[LogLevel.WARNING]: chalk.bgYellow.black,
