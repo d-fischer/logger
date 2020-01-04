@@ -47,7 +47,7 @@ export default class NodeLogger extends BaseLogger {
 		let builtMessage = '';
 
 		if (this._timestamps) {
-			builtMessage += `[${new Date().toLocaleTimeString()}] `;
+			builtMessage += `[${new Date().toISOString()}] `;
 		}
 
 		if (this._emoji) {

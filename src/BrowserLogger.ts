@@ -12,7 +12,7 @@ export default class BrowserLogger extends BaseLogger {
 		let formattedMessage = `[${this._name}] ${message}`;
 
 		if (this._timestamps) {
-			formattedMessage = `[${new Date().toLocaleTimeString()}] ${message}`;
+			formattedMessage = `[${new Date().toISOString()}] ${message}`;
 		}
 
 		logFn(formattedMessage);
