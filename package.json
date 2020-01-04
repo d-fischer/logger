@@ -8,16 +8,16 @@
   "author": "Daniel Fischer <fischer.daniel94@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.1",
+    "chalk": "^3.0.0",
     "detect-node": "^2.0.4",
-    "tslib": "^1.9.3"
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.19",
-    "rimraf": "^2.6.2",
-    "tslint": "^5.11.0",
-    "tslint-eslint-rules": "^4.1.1",
-    "typescript": "^3.0.1"
+    "@types/node": "^13.1.4",
+    "rimraf": "^3.0.0",
+    "tslint": "^5.20.1",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "lint": "tslint --project .",
