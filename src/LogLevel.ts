@@ -13,6 +13,20 @@ enum LogLevel {
 
 export default LogLevel;
 
+export function resolveLogLevel(level: string | keyof typeof LogLevel | LogLevel): LogLevel {
+	if (typeof level === 'number') {
+		return level;
+	}
+
+	const strLevel = level.toUpperCase();
+
+	if (!Object.prototype.hasOwnProperty.call(LogLevel, strLevel)) {
+		throw new Error(`Unknown log level string: ${strLevel}`);
+	}
+
+	return LogLevel[strLevel];
+}
+
 export type LogLevelMap<T> = { [severity in LogLevel]: T };
 
 // Node 8+ defines console.debug as noop, and earlier versions don't define it at all
