@@ -24,7 +24,9 @@
     "@d-fischer/eslint-config": "^1.0.3",
     "@types/node": "^13.1.4",
     "eslint": "^6.8.0",
-    "rimraf": "^3.0.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
     "ts-hybrid-esm-build": "^0.2.1"
   },
   "files": [
