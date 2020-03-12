@@ -18,9 +18,5 @@
 		"experimentalDecorators": true,
 		"importHelpers": true
 	},
-	"exclude": [
-		"node_modules",
-		"lib",
-		"../ircv3"
-	]
+	"exclude": ["node_modules", "lib", "es", "../ircv3"]
 }
