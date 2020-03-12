@@ -18,7 +18,6 @@ src
 /.travis.yml
 /publishNewVersion.sh
 /tsconfig.json
-/tslint.json
 /travis
 /docs
 /.github

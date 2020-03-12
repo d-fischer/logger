@@ -1,4 +1,4 @@
-import isNode = require('detect-node');
+import * as isNode from 'detect-node';
 
 enum LogLevel {
 	CRITICAL,
@@ -32,7 +32,7 @@ export type LogLevelMap<T> = { [severity in LogLevel]: T };
 // Node 8+ defines console.debug as noop, and earlier versions don't define it at all
 const debugFunction = isNode ? console.log.bind(console) : console.debug.bind(console);
 
-// tslint:disable-next-line:no-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const LogLevelToConsoleFunction: LogLevelMap<(message?: any, ...optionalParams: any[]) => void> = {
 	[LogLevel.CRITICAL]: console.error.bind(console),
 	[LogLevel.ERROR]: console.error.bind(console),

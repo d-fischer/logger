@@ -1,7 +1,7 @@
 import LoggerOptions from './LoggerOptions';
 import LogLevel, { resolveLogLevel } from './LogLevel';
 import Logger from './Logger';
-import isNode = require('detect-node');
+import * as isNode from 'detect-node';
 
 export default abstract class BaseLogger implements Logger {
 	protected readonly _name: string;

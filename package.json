@@ -13,16 +13,17 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@d-fischer/eslint-config": "^1.0.3",
     "@types/node": "^13.1.4",
+    "eslint": "^6.8.0",
     "rimraf": "^3.0.0",
-    "tslint": "^5.20.1",
-    "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.7.4"
+    "ts-hybrid-esm-build": "^0.2.1"
   },
   "scripts": {
-    "lint": "tslint --project .",
-    "build": "tsc",
-    "rebuild": "rimraf lib && yarn run build",
-    "prepare": "yarn run lint && yarn run rebuild"
+    "lint": "eslint --ext ts src",
+    "prettier:check": "prettier --check 'src/**'",
+    "prettier:fix": "prettier --write 'src/**'",
+    "build": "ts-hybrid-esm-build",
+    "rebuild": "ts-hybrid-esm-build --clean"
   }
 }
