@@ -2115,10 +2115,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-ts-hybrid-esm-build@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/ts-hybrid-esm-build/-/ts-hybrid-esm-build-0.2.1.tgz#bbb9fd5c4c24c145fa1148c95e36ddbb55d77a1f"
-  integrity sha512-xdDtyhAk/05bge7zFSxZFQtrjbYoL+ZwjHu89d5nFXxo8LiUFL7zsw51+djBNCIz5JKodKJPu8yELbeL/SpDYw==
+ts-hybrid-esm-build@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ts-hybrid-esm-build/-/ts-hybrid-esm-build-0.2.2.tgz#ccb8d2fc47666ec978f9744b666870e436c390b0"
+  integrity sha512-BXVgNn2E81H6v2kpo2L7pegMop4oRfkpE710MGEW2MJRrSP/Us9+onAxRRu187C3addruuIAd+QAM/IDLRLWjg==
   dependencies:
     "@oclif/command" "^1.5.19"
     "@oclif/config" "^1.14.0"
