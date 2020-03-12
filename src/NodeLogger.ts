@@ -56,7 +56,9 @@ export default class NodeLogger extends BaseLogger {
 		}
 
 		if (this._colors) {
-			builtMessage += `${LogLevelToBackgroundColor[level](this._name)} ${LogLevelToBackgroundColor[level](LogLevel[level])} ${LogLevelToColor[level](message)}`;
+			builtMessage += `${LogLevelToBackgroundColor[level](this._name)} ${LogLevelToBackgroundColor[level](
+				LogLevel[level]
+			)} ${LogLevelToColor[level](message)}`;
 		} else {
 			builtMessage += `[${this._name}:${LogLevel[level].toLowerCase()}] ${message}`;
 		}
