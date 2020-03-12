@@ -1,5 +1,4 @@
 import LogLevel, { LogLevelMap, LogLevelToConsoleFunction } from './LogLevel';
-import * as chalk from 'chalk';
 import BaseLogger from './BaseLogger';
 
 export const LogLevelToEmoji: LogLevelMap<string> = {
@@ -14,26 +13,80 @@ export const LogLevelToEmoji: LogLevelMap<string> = {
 	[LogLevel.TRACE]: '\u{1F43E}'
 };
 
-export const LogLevelToColor: LogLevelMap<chalk.Chalk> = {
-	[LogLevel.CRITICAL]: chalk.red,
-	[LogLevel.ERROR]: chalk.redBright,
-	[LogLevel.WARNING]: chalk.yellow,
-	[LogLevel.INFO]: chalk.blue,
-	[LogLevel.DEBUG1]: chalk.magenta,
-	[LogLevel.DEBUG2]: chalk.magenta,
-	[LogLevel.DEBUG3]: chalk.magenta,
-	[LogLevel.TRACE]: chalk.reset
+const colors = {
+	black: 30,
+	red: 31,
+	green: 32,
+	yellow: 33,
+	blue: 34,
+	magenta: 35,
+	cyan: 36,
+	white: 37,
+
+	blackBright: 90,
+	redBright: 91,
+	greenBright: 92,
+	yellowBright: 93,
+	blueBright: 94,
+	magentaBright: 95,
+	cyanBright: 96,
+	whiteBright: 97
 };
 
-export const LogLevelToBackgroundColor: LogLevelMap<chalk.Chalk> = {
-	[LogLevel.CRITICAL]: chalk.bgRed.white,
-	[LogLevel.ERROR]: chalk.bgRedBright.white,
-	[LogLevel.WARNING]: chalk.bgYellow.black,
-	[LogLevel.INFO]: chalk.bgBlue.white,
-	[LogLevel.DEBUG1]: chalk.bgMagenta.black,
-	[LogLevel.DEBUG2]: chalk.bgMagenta.black,
-	[LogLevel.DEBUG3]: chalk.bgMagenta.black,
-	[LogLevel.TRACE]: chalk.inverse
+const bgColors = {
+	bgBlack: 40,
+	bgRed: 41,
+	bgGreen: 42,
+	bgYellow: 43,
+	bgBlue: 44,
+	bgMagenta: 45,
+	bgCyan: 46,
+	bgWhite: 47,
+
+	bgBlackBright: 100,
+	bgRedBright: 101,
+	bgGreenBright: 102,
+	bgYellowBright: 103,
+	bgBlueBright: 104,
+	bgMagentaBright: 105,
+	bgCyanBright: 106,
+	bgWhiteBright: 107
+};
+
+type ColoringFunction = (str: string) => string;
+
+function createGenericWrapper(color: number, ending: number, inner?: ColoringFunction): ColoringFunction {
+	return str => `\u001B[${color}m${inner ? inner(str) : str}\u001B[${ending}m`;
+}
+
+function createColorWrapper(color: keyof typeof colors): ColoringFunction {
+	return createGenericWrapper(colors[color], 39);
+}
+
+function createBgWrapper(color: keyof typeof bgColors, fgWrapper: ColoringFunction): ColoringFunction {
+	return createGenericWrapper(bgColors[color], 49, fgWrapper);
+}
+
+export const LogLevelToColor: LogLevelMap<ColoringFunction> = {
+	[LogLevel.CRITICAL]: createColorWrapper('red'),
+	[LogLevel.ERROR]: createColorWrapper('redBright'),
+	[LogLevel.WARNING]: createColorWrapper('yellow'),
+	[LogLevel.INFO]: createColorWrapper('blue'),
+	[LogLevel.DEBUG1]: createColorWrapper('magenta'),
+	[LogLevel.DEBUG2]: createColorWrapper('magenta'),
+	[LogLevel.DEBUG3]: createColorWrapper('magenta'),
+	[LogLevel.TRACE]: createGenericWrapper(0, 0)
+};
+
+export const LogLevelToBackgroundColor: LogLevelMap<ColoringFunction> = {
+	[LogLevel.CRITICAL]: createBgWrapper('bgRed', createColorWrapper('white')),
+	[LogLevel.ERROR]: createBgWrapper('bgRedBright', createColorWrapper('white')),
+	[LogLevel.WARNING]: createBgWrapper('bgYellow', createColorWrapper('black')),
+	[LogLevel.INFO]: createBgWrapper('bgBlue', createColorWrapper('white')),
+	[LogLevel.DEBUG1]: createBgWrapper('bgMagenta', createColorWrapper('black')),
+	[LogLevel.DEBUG2]: createBgWrapper('bgMagenta', createColorWrapper('black')),
+	[LogLevel.DEBUG3]: createBgWrapper('bgMagenta', createColorWrapper('black')),
+	[LogLevel.TRACE]: createGenericWrapper(7, 27)
 };
 
 export default class NodeLogger extends BaseLogger {
