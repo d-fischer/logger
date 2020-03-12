@@ -3,9 +3,17 @@
   "version": "0.2.3",
   "description": "A simple logger for Node and the browser.",
   "main": "lib",
-  "types": "lib/index",
+  "types": "lib",
+  "module": "es",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    }
+  },
+  "sideEffects": false,
   "repository": "github:d-fischer/logger",
-  "author": "Daniel Fischer <fischer.daniel94@gmail.com>",
+  "author": "Daniel Fischer <daniel@d-fischer.dev>",
   "license": "MIT",
   "dependencies": {
     "chalk": "^3.0.0",
@@ -19,11 +27,32 @@
     "rimraf": "^3.0.0",
     "ts-hybrid-esm-build": "^0.2.1"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib",
+    "es"
+  ],
   "scripts": {
     "lint": "eslint --ext ts src",
     "prettier:check": "prettier --check 'src/**'",
     "prettier:fix": "prettier --write 'src/**'",
     "build": "ts-hybrid-esm-build",
     "rebuild": "ts-hybrid-esm-build --clean"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
