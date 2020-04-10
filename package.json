@@ -1,6 +1,6 @@
 {
   "name": "@d-fischer/logger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple logger for Node and the browser.",
   "main": "lib",
   "types": "lib",
