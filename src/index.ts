@@ -13,3 +13,5 @@ type Logger = ILogger;
 export default Logger;
 
 export { default as LogLevel } from './LogLevel';
+
+export { LoggerOptions };
