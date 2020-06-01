@@ -26,7 +26,8 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
-    "tsukuru": "^0.4.1"
+    "tsukuru": "^0.4.1",
+    "typescript": "~3.8.3"
   },
   "files": [
     "LICENSE",
@@ -47,13 +48,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,css,json,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,ts}": [
-      "eslint --fix",
-      "git add"
-    ]
+    "*.{js,ts,css,json,md}": "prettier --write",
+    "*.{js,ts}": "eslint --fix"
   }
 }
