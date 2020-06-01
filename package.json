@@ -26,7 +26,7 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
-    "ts-hybrid-esm-build": "^0.2.2"
+    "tsukuru": "^0.4.1"
   },
   "files": [
     "LICENSE",
@@ -38,8 +38,8 @@
     "lint": "eslint --ext ts src",
     "prettier:check": "prettier --check 'src/**'",
     "prettier:fix": "prettier --write 'src/**'",
-    "build": "ts-hybrid-esm-build",
-    "rebuild": "ts-hybrid-esm-build --clean"
+    "build": "tsukuru",
+    "rebuild": "tsukuru --clean"
   },
   "husky": {
     "hooks": {
