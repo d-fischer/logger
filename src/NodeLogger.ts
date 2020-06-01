@@ -7,9 +7,7 @@ export const LogLevelToEmoji: LogLevelMap<string> = {
 	// these following two need extra spaces at the end because somehow they consume less space in a terminal than they should...
 	[LogLevel.WARNING]: '\u{26A0}\u{FE0F} ',
 	[LogLevel.INFO]: '\u{2139}\u{FE0F} ',
-	[LogLevel.DEBUG1]: '\u{1F41E}',
-	[LogLevel.DEBUG2]: '\u{1F41C}',
-	[LogLevel.DEBUG3]: '\u{1F41B}',
+	[LogLevel.DEBUG]: '\u{1F41E}',
 	[LogLevel.TRACE]: '\u{1F43E}'
 };
 
@@ -72,9 +70,7 @@ export const LogLevelToColor: LogLevelMap<ColoringFunction> = {
 	[LogLevel.ERROR]: createColorWrapper('redBright'),
 	[LogLevel.WARNING]: createColorWrapper('yellow'),
 	[LogLevel.INFO]: createColorWrapper('blue'),
-	[LogLevel.DEBUG1]: createColorWrapper('magenta'),
-	[LogLevel.DEBUG2]: createColorWrapper('magenta'),
-	[LogLevel.DEBUG3]: createColorWrapper('magenta'),
+	[LogLevel.DEBUG]: createColorWrapper('magenta'),
 	[LogLevel.TRACE]: createGenericWrapper(0, 0)
 };
 
@@ -83,9 +79,7 @@ export const LogLevelToBackgroundColor: LogLevelMap<ColoringFunction> = {
 	[LogLevel.ERROR]: createBgWrapper('bgRedBright', createColorWrapper('white')),
 	[LogLevel.WARNING]: createBgWrapper('bgYellow', createColorWrapper('black')),
 	[LogLevel.INFO]: createBgWrapper('bgBlue', createColorWrapper('white')),
-	[LogLevel.DEBUG1]: createBgWrapper('bgMagenta', createColorWrapper('black')),
-	[LogLevel.DEBUG2]: createBgWrapper('bgMagenta', createColorWrapper('black')),
-	[LogLevel.DEBUG3]: createBgWrapper('bgMagenta', createColorWrapper('black')),
+	[LogLevel.DEBUG]: createBgWrapper('bgMagenta', createColorWrapper('black')),
 	[LogLevel.TRACE]: createGenericWrapper(7, 27)
 };
 

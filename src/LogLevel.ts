@@ -5,17 +5,30 @@ enum LogLevel {
 	ERROR,
 	WARNING,
 	INFO,
-	DEBUG1,
-	DEBUG2,
-	DEBUG3,
-	TRACE
+	DEBUG,
+	/** @deprecated use DEBUG instead */
+	DEBUG1 = 4,
+	/** @deprecated use DEBUG instead */
+	DEBUG2 = 4,
+	/** @deprecated use DEBUG instead */
+	DEBUG3 = 4,
+	TRACE = 7
 }
 
 export default LogLevel;
 
 export function resolveLogLevel(level: string | keyof typeof LogLevel | LogLevel): LogLevel {
 	if (typeof level === 'number') {
-		return level;
+		if (Object.prototype.hasOwnProperty.call(LogLevel, level)) {
+			return level;
+		}
+		const eligibleLevels = Object.keys(LogLevel)
+			.map(k => parseInt(k, 10))
+			.filter(k => !isNaN(k) && k < level);
+		if (!eligibleLevels) {
+			return LogLevel.WARNING;
+		}
+		return Math.max.apply(Math, eligibleLevels);
 	}
 
 	const strLevel = level.toUpperCase();
@@ -38,8 +51,6 @@ export const LogLevelToConsoleFunction: LogLevelMap<(message?: any, ...optionalP
 	[LogLevel.ERROR]: console.error.bind(console),
 	[LogLevel.WARNING]: console.warn.bind(console),
 	[LogLevel.INFO]: console.info.bind(console),
-	[LogLevel.DEBUG1]: debugFunction.bind(console),
-	[LogLevel.DEBUG2]: debugFunction.bind(console),
-	[LogLevel.DEBUG3]: debugFunction.bind(console),
+	[LogLevel.DEBUG]: debugFunction.bind(console),
 	[LogLevel.TRACE]: console.trace.bind(console)
 };

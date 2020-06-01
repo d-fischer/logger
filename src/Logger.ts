@@ -12,8 +12,11 @@ export default interface Logger {
 	warning(message: string): void;
 	info(message: string): void;
 	debug(message: string): void;
+	/** @deprecated */
 	debug1(message: string): void;
+	/** @deprecated */
 	debug2(message: string): void;
+	/** @deprecated */
 	debug3(message: string): void;
 	trace(message: string): void;
 }

@@ -56,19 +56,22 @@ export default abstract class BaseLogger implements Logger {
 	}
 
 	debug(message: string) {
-		this.log(LogLevel.DEBUG1, message);
+		this.log(LogLevel.DEBUG, message);
 	}
 
+	/** @deprecated use debug instead */
 	debug1(message: string) {
-		this.log(LogLevel.DEBUG1, message);
+		this.log(LogLevel.DEBUG, message);
 	}
 
+	/** @deprecated use debug instead */
 	debug2(message: string) {
-		this.log(LogLevel.DEBUG2, message);
+		this.log(LogLevel.DEBUG, message);
 	}
 
+	/** @deprecated use debug instead */
 	debug3(message: string) {
-		this.log(LogLevel.DEBUG3, message);
+		this.log(LogLevel.DEBUG, message);
 	}
 
 	trace(message: string) {
