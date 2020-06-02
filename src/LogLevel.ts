@@ -5,13 +5,13 @@ enum LogLevel {
 	ERROR,
 	WARNING,
 	INFO,
-	DEBUG,
 	/** @deprecated use DEBUG instead */
 	DEBUG1 = 4,
 	/** @deprecated use DEBUG instead */
 	DEBUG2 = 4,
 	/** @deprecated use DEBUG instead */
 	DEBUG3 = 4,
+	DEBUG = 4,
 	TRACE = 7
 }
 
