@@ -1,5 +1,5 @@
-import LogLevel, { LogLevelMap, LogLevelToConsoleFunction } from './LogLevel';
-import BaseLogger from './BaseLogger';
+import { LogLevel, LogLevelMap, LogLevelToConsoleFunction } from './LogLevel';
+import { BaseLogger } from './BaseLogger';
 
 export const LogLevelToEmoji: LogLevelMap<string> = {
 	[LogLevel.CRITICAL]: '\u{1F6D1}',
@@ -83,7 +83,7 @@ export const LogLevelToBackgroundColor: LogLevelMap<ColoringFunction> = {
 	[LogLevel.TRACE]: createGenericWrapper(7, 27)
 };
 
-export default class NodeLogger extends BaseLogger {
+export class NodeLogger extends BaseLogger {
 	log(level: LogLevel, message: string) {
 		if (level > this._minLevel) {
 			return;

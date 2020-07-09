@@ -1,9 +1,9 @@
-import LoggerOptions from './LoggerOptions';
-import LogLevel, { resolveLogLevel } from './LogLevel';
-import Logger from './Logger';
+import { LoggerOptions } from './LoggerOptions';
+import { LogLevel, resolveLogLevel } from './LogLevel';
+import { Logger } from './Logger';
 import * as isNode from 'detect-node';
 
-export default abstract class BaseLogger implements Logger {
+export abstract class BaseLogger implements Logger {
 	protected readonly _name: string;
 	protected readonly _minLevel: LogLevel;
 	protected readonly _emoji: boolean;

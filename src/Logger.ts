@@ -1,6 +1,6 @@
-import LogLevel from './LogLevel';
+import { LogLevel } from './LogLevel';
 
-export default interface Logger {
+export interface Logger {
 	log(level: LogLevel, message: string): void;
 
 	// convenience

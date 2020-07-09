@@ -1,6 +1,6 @@
 import * as isNode from 'detect-node';
 
-enum LogLevel {
+export enum LogLevel {
 	CRITICAL,
 	ERROR,
 	WARNING,
@@ -14,8 +14,6 @@ enum LogLevel {
 	DEBUG = 4,
 	TRACE = 7
 }
-
-export default LogLevel;
 
 export function resolveLogLevel(level: string | keyof typeof LogLevel | LogLevel): LogLevel {
 	if (typeof level === 'number') {

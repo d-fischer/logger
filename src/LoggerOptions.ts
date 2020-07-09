@@ -1,6 +1,6 @@
-import LogLevel from './LogLevel';
+import { LogLevel } from './LogLevel';
 
-export default interface LoggerOptions {
+export interface LoggerOptions {
 	name: string;
 	minLevel?: LogLevel | keyof typeof LogLevel | string;
 	colors?: boolean;
