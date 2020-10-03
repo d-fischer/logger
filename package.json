@@ -4,7 +4,6 @@
   "description": "A simple logger for Node and the browser.",
   "main": "lib",
   "types": "lib",
-  "module": "es",
   "exports": {
     ".": {
       "require": "./lib/index.js",
