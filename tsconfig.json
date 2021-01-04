@@ -11,12 +11,10 @@
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitReturns": true,
 		"strict": true,
-		"strictFunctionTypes": false,
-		"strictPropertyInitialization": false,
-		"suppressImplicitAnyIndexErrors": true,
 		"noUnusedLocals": true,
 		"experimentalDecorators": true,
-		"importHelpers": true
+		"importHelpers": true,
+		"isolatedModules": true
 	},
 	"exclude": ["node_modules", "lib", "es", "../ircv3"]
 }

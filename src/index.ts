@@ -1,7 +1,7 @@
 /* eslint-disable filenames/match-exported */
 import * as isNode from 'detect-node';
-import { Logger as ILogger } from './Logger';
-import { LoggerOptions } from './LoggerOptions';
+import type { Logger as ILogger } from './Logger';
+import type { LoggerOptions } from './LoggerOptions';
 
 import { NodeLogger } from './NodeLogger';
 import { BrowserLogger } from './BrowserLogger';
@@ -14,4 +14,4 @@ export { Logger };
 
 export { LogLevel } from './LogLevel';
 
-export { LoggerOptions };
+export type { LoggerOptions };

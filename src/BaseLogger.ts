@@ -1,6 +1,6 @@
-import { LoggerOptions } from './LoggerOptions';
+import type { LoggerOptions } from './LoggerOptions';
 import { LogLevel, resolveLogLevel } from './LogLevel';
-import { Logger } from './Logger';
+import type { Logger } from './Logger';
 import * as isNode from 'detect-node';
 
 export abstract class BaseLogger implements Logger {
@@ -27,54 +27,54 @@ export abstract class BaseLogger implements Logger {
 	abstract log(level: LogLevel, message: string): void;
 
 	// region convenience methods
-	crit(message: string) {
+	crit(message: string): void {
 		this.log(LogLevel.CRITICAL, message);
 	}
 
-	critical(message: string) {
+	critical(message: string): void {
 		this.log(LogLevel.CRITICAL, message);
 	}
 
-	err(message: string) {
+	err(message: string): void {
 		this.log(LogLevel.ERROR, message);
 	}
 
-	error(message: string) {
+	error(message: string): void {
 		this.log(LogLevel.ERROR, message);
 	}
 
-	warn(message: string) {
+	warn(message: string): void {
 		this.log(LogLevel.WARNING, message);
 	}
 
-	warning(message: string) {
+	warning(message: string): void {
 		this.log(LogLevel.WARNING, message);
 	}
 
-	info(message: string) {
+	info(message: string): void {
 		this.log(LogLevel.INFO, message);
 	}
 
-	debug(message: string) {
+	debug(message: string): void {
 		this.log(LogLevel.DEBUG, message);
 	}
 
 	/** @deprecated use debug instead */
-	debug1(message: string) {
+	debug1(message: string): void {
 		this.log(LogLevel.DEBUG, message);
 	}
 
 	/** @deprecated use debug instead */
-	debug2(message: string) {
+	debug2(message: string): void {
 		this.log(LogLevel.DEBUG, message);
 	}
 
 	/** @deprecated use debug instead */
-	debug3(message: string) {
+	debug3(message: string): void {
 		this.log(LogLevel.DEBUG, message);
 	}
 
-	trace(message: string) {
+	trace(message: string): void {
 		this.log(LogLevel.TRACE, message);
 	}
 	// endregion

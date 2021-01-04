@@ -23,13 +23,13 @@ export function resolveLogLevel(level: string | keyof typeof LogLevel | LogLevel
 		const eligibleLevels = Object.keys(LogLevel)
 			.map(k => parseInt(k, 10))
 			.filter(k => !isNaN(k) && k < level);
-		if (!eligibleLevels) {
+		if (!eligibleLevels.length) {
 			return LogLevel.WARNING;
 		}
-		return Math.max.apply(Math, eligibleLevels);
+		return Math.max(...eligibleLevels);
 	}
 
-	const strLevel = level.toUpperCase();
+	const strLevel = level.toUpperCase() as keyof typeof LogLevel;
 
 	if (!Object.prototype.hasOwnProperty.call(LogLevel, strLevel)) {
 		throw new Error(`Unknown log level string: ${strLevel}`);

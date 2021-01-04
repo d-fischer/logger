@@ -1,8 +1,9 @@
-import { LogLevel, LogLevelToConsoleFunction } from './LogLevel';
+import type { LogLevel } from './LogLevel';
+import { LogLevelToConsoleFunction } from './LogLevel';
 import { BaseLogger } from './BaseLogger';
 
 export class BrowserLogger extends BaseLogger {
-	log(level: LogLevel, message: string) {
+	log(level: LogLevel, message: string): void {
 		if (level > this._minLevel) {
 			return;
 		}
