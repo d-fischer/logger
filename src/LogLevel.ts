@@ -5,12 +5,6 @@ export enum LogLevel {
 	ERROR,
 	WARNING,
 	INFO,
-	/** @deprecated use DEBUG instead */
-	DEBUG1 = 4,
-	/** @deprecated use DEBUG instead */
-	DEBUG2 = 4,
-	/** @deprecated use DEBUG instead */
-	DEBUG3 = 4,
 	DEBUG = 4,
 	TRACE = 7
 }
@@ -29,10 +23,11 @@ export function resolveLogLevel(level: string | keyof typeof LogLevel | LogLevel
 		return Math.max(...eligibleLevels);
 	}
 
-	const strLevel = level.toUpperCase() as keyof typeof LogLevel;
+	// TODO drop the replace for next major, it keeps the old deprecated debug1/2/3 levels running
+	const strLevel = level.replace(/\d+$/, '').toUpperCase() as keyof typeof LogLevel;
 
 	if (!Object.prototype.hasOwnProperty.call(LogLevel, strLevel)) {
-		throw new Error(`Unknown log level string: ${strLevel}`);
+		throw new Error(`Unknown log level string: ${level}`);
 	}
 
 	return LogLevel[strLevel];
