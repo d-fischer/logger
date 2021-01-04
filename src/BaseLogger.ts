@@ -31,23 +31,11 @@ export abstract class BaseLogger implements Logger {
 		this.log(LogLevel.CRITICAL, message);
 	}
 
-	critical(message: string): void {
-		this.log(LogLevel.CRITICAL, message);
-	}
-
-	err(message: string): void {
-		this.log(LogLevel.ERROR, message);
-	}
-
 	error(message: string): void {
 		this.log(LogLevel.ERROR, message);
 	}
 
 	warn(message: string): void {
-		this.log(LogLevel.WARNING, message);
-	}
-
-	warning(message: string): void {
 		this.log(LogLevel.WARNING, message);
 	}
 
