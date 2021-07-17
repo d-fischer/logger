@@ -1,4 +1,5 @@
 import { mapOptional } from '@d-fischer/shared-utils';
+import { getMinLogLevelFromEnv } from './getMinLogLevelFromEnv';
 import type { Logger } from './Logger';
 import type { LoggerOptions } from './LoggerOptions';
 import { LogLevel, resolveLogLevel } from './LogLevel';
@@ -18,17 +19,11 @@ export interface LoggerOverrideConfig {
 export type LoggerOverride = LoggerOverrideConfig | ((level: LogLevel, message: string) => void);
 
 export class CustomLoggerWrapper implements Logger {
-	// private readonly _name: string;
 	private readonly _minLevel?: LogLevel;
 	private readonly _override: LoggerOverrideConfig;
 
-	constructor({
-		// name,
-		minLevel,
-		custom
-	}: LoggerOptions) {
-		// this._name = name;
-		this._minLevel = mapOptional(minLevel, lv => resolveLogLevel(lv));
+	constructor({ name, minLevel, custom }: LoggerOptions) {
+		this._minLevel = mapOptional(minLevel, lv => resolveLogLevel(lv)) ?? getMinLogLevelFromEnv(name);
 		this._override = typeof custom === 'function' ? { log: custom } : custom!;
 	}
 

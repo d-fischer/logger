@@ -1,7 +1,9 @@
+import { mapOptional } from '@d-fischer/shared-utils';
+import * as isNode from 'detect-node';
+import { getMinLogLevelFromEnv } from './getMinLogLevelFromEnv';
+import type { Logger } from './Logger';
 import type { LoggerOptions } from './LoggerOptions';
 import { LogLevel, resolveLogLevel } from './LogLevel';
-import type { Logger } from './Logger';
-import * as isNode from 'detect-node';
 
 export abstract class BaseLogger implements Logger {
 	protected readonly _name: string;
@@ -10,15 +12,10 @@ export abstract class BaseLogger implements Logger {
 	protected readonly _colors: boolean;
 	protected readonly _timestamps: boolean;
 
-	constructor({
-		name,
-		minLevel = LogLevel.WARNING,
-		emoji = false,
-		colors = true,
-		timestamps = isNode
-	}: LoggerOptions) {
+	constructor({ name, minLevel, emoji = false, colors = true, timestamps = isNode }: LoggerOptions) {
 		this._name = name;
-		this._minLevel = resolveLogLevel(minLevel);
+		this._minLevel =
+			mapOptional(minLevel, lv => resolveLogLevel(lv)) ?? getMinLogLevelFromEnv(name) ?? LogLevel.WARNING;
 		this._emoji = emoji;
 		this._colors = colors;
 		this._timestamps = timestamps;
