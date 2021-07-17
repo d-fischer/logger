@@ -1,7 +1,5 @@
-/* eslint-disable filenames/match-exported */
-export { Logger } from './Logger';
-export type { LoggerOptions } from './LoggerOptions';
+export { createLogger } from './createLogger';
 export { LogLevel } from './LogLevel';
 
-export type { LoggerOptionsOrCustom } from './CustomLogger';
-export { createLogger } from './CustomLogger';
+export type { Logger } from './Logger';
+export type { LoggerOptions } from './LoggerOptions';
