@@ -1,4 +1,4 @@
-import type { LoggerOverrideConfig } from './CustomLoggerWrapper';
+import type { LoggerOverride } from './CustomLoggerWrapper';
 import type { LogLevel } from './LogLevel';
 
 export interface LoggerOptions {
@@ -7,5 +7,5 @@ export interface LoggerOptions {
 	colors?: boolean;
 	emoji?: boolean;
 	timestamps?: boolean;
-	custom?: LoggerOverrideConfig;
+	custom?: LoggerOverride;
 }
