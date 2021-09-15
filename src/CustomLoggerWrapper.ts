@@ -82,6 +82,6 @@ export class CustomLoggerWrapper implements Logger {
 	}
 
 	private _shouldLog(level: LogLevel) {
-		return this._minLevel === undefined || this._minLevel <= level;
+		return this._minLevel === undefined || this._minLevel >= level;
 	}
 }
