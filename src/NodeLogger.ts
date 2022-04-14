@@ -1,3 +1,4 @@
+import type { WriteStream } from 'tty';
 import type { LogLevelMap } from './LogLevel';
 import { LogLevel, LogLevelToConsoleFunction } from './LogLevel';
 import { BaseLogger } from './BaseLogger';
@@ -103,7 +104,9 @@ export class NodeLogger extends BaseLogger {
 			builtMessage += `${emoji} `;
 		}
 
-		if (this._colors) {
+		const useColors = this._colors ?? (process.stdout as WriteStream | undefined)?.isTTY ?? true;
+
+		if (useColors) {
 			builtMessage += `${LogLevelToBackgroundColor[level](this._name)} ${LogLevelToBackgroundColor[level](
 				LogLevel[level]
 			)} ${LogLevelToColor[level](message)}`;

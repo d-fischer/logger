@@ -9,10 +9,10 @@ export abstract class BaseLogger implements Logger {
 	protected readonly _name: string;
 	protected readonly _minLevel: LogLevel;
 	protected readonly _emoji: boolean;
-	protected readonly _colors: boolean;
+	protected readonly _colors?: boolean;
 	protected readonly _timestamps: boolean;
 
-	constructor({ name, minLevel, emoji = false, colors = true, timestamps = isNode }: LoggerOptions) {
+	constructor({ name, minLevel, emoji = false, colors, timestamps = isNode }: LoggerOptions) {
 		this._name = name;
 		this._minLevel =
 			mapOptional(minLevel, lv => resolveLogLevel(lv)) ?? getMinLogLevelFromEnv(name) ?? LogLevel.WARNING;
