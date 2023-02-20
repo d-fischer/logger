@@ -1,4 +1,4 @@
-import * as isNode from 'detect-node';
+import { isNode } from '@d-fischer/detect-node';
 import { BrowserLogger } from './BrowserLogger';
 import { CustomLoggerWrapper } from './CustomLoggerWrapper';
 import type { Logger } from './Logger';

@@ -1,4 +1,4 @@
-import * as isNode from 'detect-node';
+import { isNode } from '@d-fischer/detect-node';
 
 export enum LogLevel {
 	CRITICAL,

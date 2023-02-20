@@ -1,5 +1,5 @@
 import { mapOptional } from '@d-fischer/shared-utils';
-import * as isNode from 'detect-node';
+import { isNode } from '@d-fischer/detect-node';
 import { getMinLogLevelFromEnv } from './getMinLogLevelFromEnv';
 import type { Logger } from './Logger';
 import type { LoggerOptions } from './LoggerOptions';
